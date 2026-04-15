@@ -156,8 +156,12 @@ document.querySelector('.contact-form')?.addEventListener('submit', (event) => {
   const feedback = event.currentTarget.querySelector('.contact-feedback');
   if (feedback) {
     feedback.textContent = 'Thanks — message received. Reach out via email for faster response.';
+    feedback.classList.add('is-visible');
     setTimeout(() => {
-      feedback.textContent = '';
+      feedback.classList.remove('is-visible');
+      setTimeout(() => {
+        feedback.textContent = '';
+      }, 350);
     }, 3500);
   }
 });
