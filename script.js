@@ -53,6 +53,11 @@ journeyCards.forEach((card) => {
 });
 
 if (window.matchMedia('(min-width: 901px)').matches) {
+  const PARALLAX = {
+    past: { moveY: -40, rotateStart: -3, rotateShift: -1 },
+    present: { moveY: -15, rotateStart: 1.5, rotateShift: 1 },
+    future: { moveY: 30, rotateStart: -1, rotateShift: -1 }
+  };
   const journeySection = document.getElementById('journey');
   const applyJourneyParallax = () => {
     const rect = journeySection.getBoundingClientRect();
@@ -63,9 +68,21 @@ if (window.matchMedia('(min-width: 901px)').matches) {
     const present = document.querySelector('.journey-card--present');
     const future = document.querySelector('.journey-card--future');
 
-    if (past) past.style.transform = `translateY(${(-40 * progress).toFixed(2)}px) rotate(${(-3 - progress).toFixed(2)}deg)`;
-    if (present) present.style.transform = `translateY(${(-15 * progress).toFixed(2)}px) rotate(${(1.5 + progress).toFixed(2)}deg)`;
-    if (future) future.style.transform = `translateY(${(30 * progress).toFixed(2)}px) rotate(${(-1 - progress).toFixed(2)}deg)`;
+    if (past) {
+      const y = PARALLAX.past.moveY * progress;
+      const rotate = PARALLAX.past.rotateStart + PARALLAX.past.rotateShift * progress;
+      past.style.transform = `translateY(${y.toFixed(2)}px) rotate(${rotate.toFixed(2)}deg)`;
+    }
+    if (present) {
+      const y = PARALLAX.present.moveY * progress;
+      const rotate = PARALLAX.present.rotateStart + PARALLAX.present.rotateShift * progress;
+      present.style.transform = `translateY(${y.toFixed(2)}px) rotate(${rotate.toFixed(2)}deg)`;
+    }
+    if (future) {
+      const y = PARALLAX.future.moveY * progress;
+      const rotate = PARALLAX.future.rotateStart + PARALLAX.future.rotateShift * progress;
+      future.style.transform = `translateY(${y.toFixed(2)}px) rotate(${rotate.toFixed(2)}deg)`;
+    }
   };
 
   applyJourneyParallax();
@@ -95,6 +112,7 @@ tabButtons.forEach((btn) => {
 
 const hasFinePointer = window.matchMedia('(pointer:fine)').matches;
 if (hasFinePointer) {
+  const CURSOR_EASING = 0.18;
   const dot = document.getElementById('cursorDot');
   const ring = document.getElementById('cursorRing');
 
@@ -111,8 +129,8 @@ if (hasFinePointer) {
   });
 
   const loop = () => {
-    ringX += (mouseX - ringX) * 0.18;
-    ringY += (mouseY - ringY) * 0.18;
+    ringX += (mouseX - ringX) * CURSOR_EASING;
+    ringY += (mouseY - ringY) * CURSOR_EASING;
     ring.style.left = `${ringX}px`;
     ring.style.top = `${ringY}px`;
     requestAnimationFrame(loop);
@@ -135,4 +153,11 @@ if (hasFinePointer) {
 document.querySelector('.contact-form')?.addEventListener('submit', (event) => {
   event.preventDefault();
   event.currentTarget.reset();
+  const feedback = event.currentTarget.querySelector('.contact-feedback');
+  if (feedback) {
+    feedback.textContent = 'Thanks — message received. Reach out via email for faster response.';
+    setTimeout(() => {
+      feedback.textContent = '';
+    }, 3500);
+  }
 });
