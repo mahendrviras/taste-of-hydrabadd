@@ -1,6 +1,6 @@
-# Taste Of Hydrabadd Website
+# Mahendra Viras Portfolio
 
-A simple, responsive restaurant website for **Taste Of Hyderabad (Powai)** built with plain HTML, CSS, and JavaScript.
+Single-page editorial portfolio site built with plain HTML/CSS/JS and GSAP scroll animations.
 
 ## Run locally
 

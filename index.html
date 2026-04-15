@@ -3,112 +3,176 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Taste Of Hyderabad | Powai</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap" rel="stylesheet">
+  <title>Mahendra Viras | Portfolio</title>
+  <meta name="description" content="Editorial portfolio of Mahendra Viras — Video Editor, UI Designer, Storyteller." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Manrope:wght@300;400;500;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="hero">
-    <div class="hero__overlay"></div>
-    <nav class="top-nav container">
-      <div class="brand-mark">TOH</div>
-      <a href="#contact" class="btn btn--small">Reserve a Table</a>
-    </nav>
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__name" id="loaderName"></div>
+  </div>
 
-    <div class="hero__content container">
-      <p class="tag">Authentic Hyderabadi Flavours in Powai</p>
-      <h1>Taste Of Hyderabad</h1>
-      <p class="hindi">टेस्ट ऑफ़ हैदराबाद</p>
-      <div class="badges">
-        <span>⭐ 4.7 (1,289 Reviews)</span>
-        <span>₹200–400 Per Person</span>
-        <span>Open · Closes 12 AM</span>
-      </div>
-      <div class="hero__actions">
-        <a href="#menu" class="btn">View Menu</a>
-        <a href="#reviews" class="btn btn--outline">Read Reviews</a>
-      </div>
+  <div class="cursor cursor--dot" id="cursorDot"></div>
+  <div class="cursor cursor--ring" id="cursorRing"></div>
+
+  <header class="hero" id="top">
+    <div class="hero__inner wrapper">
+      <p class="hero__intro reveal" data-reveal="left">VIDEO EDITOR • UI DESIGNER • STORYTELLER</p>
+      <h1 class="hero__title">
+        <span class="reveal" data-reveal="up">MAHENDRA</span>
+        <span class="hero__offset reveal" data-reveal="up">VIRAS</span>
+      </h1>
+      <div class="hero__line" id="heroLine"></div>
+      <a class="hero__scroll reveal" data-reveal="up" href="#journey">SCROLL</a>
     </div>
   </header>
 
   <main>
-    <section class="container cards-row" id="overview">
-      <article class="card">
-        <h2>About Us</h2>
-        <p>We serve rich and aromatic Hyderabadi cuisine with a focus on signature biryanis, comforting curries, and flavour-packed starters. Whether you're dining in, ordering takeaway, or requesting no-contact delivery, we bring you a complete experience at an affordable price.</p>
-        <ul class="service-list">
-          <li>✅ Dine-in</li>
-          <li>✅ Takeaway</li>
-          <li>✅ No-contact delivery</li>
-        </ul>
-      </article>
-      <article class="card" id="contact">
-        <h2>Location & Contact</h2>
-        <p>Shop No. 01, Municipal School, near Tirandaz, opposite IIT Main Gate, BSNL Colony, Powai, Mumbai, Maharashtra 400076</p>
-        <p><strong>Plus code:</strong> 4WF8+CH Mumbai, Maharashtra</p>
-        <p><strong>Phone:</strong> <a href="tel:+918779011852">087790 11852</a></p>
-      </article>
+    <section class="journey wrapper" id="journey">
+      <p class="section-tag reveal" data-reveal="left">THE JOURNEY</p>
+      <div class="journey-stack">
+        <article class="journey-card journey-card--past active reveal" data-card="past" tabindex="0">
+          <p class="journey-card__meta">PAST</p>
+          <h2>WHERE IT STARTED</h2>
+          <p>Rajasthan Board 12th — 95.8% → Cracked JEE Mains &amp; Advanced → Landed at IIT Bombay.</p>
+          <p class="journey-card__beat">Small town. Big scores. Bigger dreams.</p>
+          <div class="badge-strip" aria-label="Past highlights">
+            <span>XLR8 (ERC Club): team management, soldering, mech handling</span>
+            <span>CodeWars: built a virtual bot player</span>
+            <span>SIH Insti Selection: 2 teams</span>
+            <span>Makerspace: Fusion 360 + robotic arm 3D design</span>
+            <span>Group dance: school to college</span>
+            <span>Showstopper by StyleUp: flagship fashion showcase</span>
+            <span>FilmFest by SilverScreen: scriptwriting + production</span>
+          </div>
+        </article>
+
+        <article class="journey-card journey-card--present reveal" data-card="present" tabindex="0">
+          <p class="journey-card__meta">PRESENT</p>
+          <h2>WHAT I DO NOW</h2>
+          <div class="skill-block">
+            <h3>VIDEO EDITING</h3>
+            <p>DaVinci Resolve specialist — typography sync, motion graphics, color grading. Self-content reels, event teasers, brand videos, long-form edits. 6+ months professional experience. Freelance + personal brand.</p>
+          </div>
+          <div class="skill-block">
+            <h3>UI DESIGN</h3>
+            <p>Figma-focused app and web design. Redesigned ITC institute body UI (9-12 clubs). Created Vision app concept from scratch. Designed Instagram posts for freelance clients.</p>
+          </div>
+          <p class="journey-card__mini">Also: Photography (candid moments + editing), Scriptwriting (Instagram storytelling), AI Prompting (creative output workflow)</p>
+        </article>
+
+        <article class="journey-card journey-card--future reveal" data-card="future" tabindex="0">
+          <p class="journey-card__meta">FUTURE</p>
+          <h2>WHERE I'M HEADED</h2>
+          <p>Learning DaVinci advanced camera tracking + motion, coding in parallel, expanding design portfolio, and building Instagram presence (@pixel.tells).</p>
+          <p class="journey-card__beat">Still figuring it out. Learning from everything. That's the point.</p>
+        </article>
+      </div>
     </section>
 
-    <section class="menu-section" id="menu">
-      <div class="container">
-        <h2>Popular Menu Highlights</h2>
-        <p class="section-lead">Crowd favourites loved by regulars and first-time visitors alike.</p>
-        <div class="menu-grid">
-          <article class="menu-item">
-            <h3>Chicken Dum Biryani</h3>
-            <p>Traditional dum-style biryani layered with fragrant basmati rice and spiced chicken.</p>
-          </article>
-          <article class="menu-item">
-            <h3>Chicken Fry Biryani</h3>
-            <p>Bold and spicy biryani paired with crispy, masala-coated chicken pieces.</p>
-          </article>
-          <article class="menu-item">
-            <h3>Chicken Tikka Masala</h3>
-            <p>Char-grilled chicken tikka tossed in a rich, creamy masala gravy.</p>
-          </article>
-          <article class="menu-item">
-            <h3>Chicken Hot N Sour Soup</h3>
-            <p>A comforting starter with tangy and spicy notes to kick-start your meal.</p>
-          </article>
-        </div>
+    <section class="work wrapper" id="work">
+      <p class="section-tag reveal" data-reveal="left">SELECTED WORK</p>
+      <div class="work-tabs reveal" data-reveal="up" role="tablist" aria-label="Work categories">
+        <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="panel-video" id="tab-video" data-tab="video">VIDEO</button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-design" id="tab-design" data-tab="design">DESIGN</button>
+      </div>
+
+      <div class="tab-panel active" id="panel-video" role="tabpanel" aria-labelledby="tab-video">
+        <a class="project reveal" data-reveal="scale" href="https://www.instagram.com/reel/DOy2oEKkzAl/" target="_blank" rel="noopener noreferrer">
+          <span class="project__name">Freshers Intro Video</span>
+        </a>
+        <a class="project reveal" data-reveal="scale" href="https://drive.google.com/file/d/1A7r55W3skfU791NTltlA0uS-F7Bf2kjD/view" target="_blank" rel="noopener noreferrer">
+          <span class="project__name">Event Teaser</span>
+        </a>
+        <a class="project reveal" data-reveal="scale" href="https://www.instagram.com/reel/DW3ukjmvpW_/" target="_blank" rel="noopener noreferrer">
+          <span class="project__name">Self Typography Reel</span>
+        </a>
+        <div class="project project--placeholder reveal" data-reveal="scale"><span class="project__name">MORE COMING SOON</span></div>
+        <div class="project project--placeholder reveal" data-reveal="scale"><span class="project__name">MORE COMING SOON</span></div>
+      </div>
+
+      <div class="tab-panel" id="panel-design" role="tabpanel" aria-labelledby="tab-design">
+        <a class="project project--design reveal" data-reveal="scale" href="https://drive.google.com/file/d/1iH4hmg0IjT5xCE_ZmGPDpHjONzrT6imP/view" target="_blank" rel="noopener noreferrer">
+          <span class="project__name">Instagram Post Design</span>
+        </a>
+        <a class="project project--design reveal" data-reveal="scale" href="https://www.figma.com/design/zZBiMNLxBDv9Wz2PJaoqPL/Untitled?node-id=205-493" target="_blank" rel="noopener noreferrer">
+          <span class="project__name">Web Concept 1</span>
+        </a>
+        <a class="project project--design reveal" data-reveal="scale" href="https://www.figma.com/design/zZBiMNLxBDv9Wz2PJaoqPL/Untitled?node-id=167-2" target="_blank" rel="noopener noreferrer">
+          <span class="project__name">Web Concept 2</span>
+        </a>
       </div>
     </section>
 
-    <section class="container" id="reviews">
-      <h2>What Guests Say</h2>
-      <div class="review-summary">
-        <p><strong>Overall rating:</strong> 4.7/5 from 1,289 reviews</p>
-        <div class="chips">
-          <span>Hyderabadi biryani</span>
-          <span>Dum biryani</span>
-          <span>Starters</span>
-          <span>IIT Bombay crowd favourite</span>
-        </div>
+    <section class="services wrapper" id="services">
+      <p class="section-tag reveal" data-reveal="left">SERVICES</p>
+      <div class="services-grid">
+        <article class="service reveal" data-reveal="up">
+          <h2>VIDEO EDITING</h2>
+          <ul>
+            <li>Self-content / promotion reels</li>
+            <li>Event reels &amp; teasers</li>
+            <li>Brand reels</li>
+            <li>Long-form editing</li>
+          </ul>
+          <p>For pricing — DM or book an appointment.</p>
+        </article>
+        <article class="service reveal" data-reveal="up">
+          <h2>UI DESIGN</h2>
+          <ul>
+            <li>Full app design</li>
+            <li>Website design</li>
+          </ul>
+          <p>For pricing — DM or book an appointment.</p>
+        </article>
       </div>
-      <div class="review-grid">
-        <blockquote>
-          <p>"Awesome food, great service and ambience at affordable price!"</p>
-        </blockquote>
-        <blockquote>
-          <p>"We were 5 people and we all enjoyed the atmosphere and the vibe."</p>
-        </blockquote>
-        <blockquote>
-          <p>"Hidden place in Powai… chicken quality and quantity was good."</p>
-        </blockquote>
+    </section>
+
+    <section class="about wrapper" id="about">
+      <p class="section-tag reveal" data-reveal="left">ABOUT</p>
+      <blockquote class="about-quote reveal" data-reveal="up">Still figuring out life. Learning from every single thing that comes my way.</blockquote>
+      <div class="fact-strip reveal" data-reveal="up">
+        <span>IIT Bombay</span>
+        <span>DaVinci Resolve</span>
+        <span>Figma</span>
+        <span>Storyteller</span>
+        <span>@pixel.tells</span>
       </div>
+      <div class="about-placeholder reveal" data-reveal="scale" aria-label="Candid image placeholder">CANDID FRAME / ILLUSTRATION PLACEHOLDER</div>
+    </section>
+
+    <section class="cta wrapper" id="book">
+      <p class="section-tag reveal" data-reveal="left">LET'S TALK</p>
+      <h2 class="reveal" data-reveal="up">BOOK A CALL</h2>
+      <a class="cta-btn reveal" data-reveal="up" href="https://calendly.com/mahendraviras" target="_blank" rel="noopener noreferrer">Book Appointment</a>
+      <p class="cta-note reveal" data-reveal="up">Free 30-min consultation to discuss your project.</p>
     </section>
   </main>
 
-  <footer>
-    <div class="container footer-inner">
-      <p>© <span id="year"></span> Taste Of Hyderabad, Powai</p>
-      <p>Hyderabadi Restaurant · Mumbai</p>
+  <footer class="footer wrapper" id="contact">
+    <div class="footer-grid">
+      <div class="reveal" data-reveal="up">
+        <h3>CONTACT</h3>
+        <p><a href="mailto:mahendrvirash@gmail.com">mahendrvirash@gmail.com</a></p>
+        <p><a href="tel:+918824152883">8824152883</a></p>
+        <p><a href="https://www.instagram.com/pixel.tells" target="_blank" rel="noopener noreferrer">Instagram</a></p>
+        <p><a href="https://github.com/mahendrviras" target="_blank" rel="noopener noreferrer">GitHub</a></p>
+      </div>
+      <form class="contact-form reveal" data-reveal="up">
+        <label>Name<input type="text" name="name" required /></label>
+        <label>Email<input type="email" name="email" required /></label>
+        <label>Message<textarea name="message" rows="4" required></textarea></label>
+        <button type="submit">Submit</button>
+      </form>
     </div>
+    <p class="footer-note">Designed &amp; Built by Mahendra Viras © <span id="year"></span></p>
   </footer>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
