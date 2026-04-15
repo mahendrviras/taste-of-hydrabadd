@@ -40,6 +40,7 @@ a {
   place-items: center;
   background: #050505;
   z-index: 999;
+  transition: opacity 0.55s ease, visibility 0.55s ease;
 }
 
 .loader__name {
@@ -47,12 +48,14 @@ a {
   font-size: clamp(2.4rem, 9vw, 7rem);
   font-weight: 700;
   letter-spacing: 0.2em;
+  transition: letter-spacing 0.5s ease;
 }
 
 .loader__char {
   display: inline-block;
   opacity: 0;
   transform: translateY(14px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
 .cursor {
@@ -119,6 +122,11 @@ a {
   background: var(--accent);
   margin-top: clamp(2rem, 7vw, 5rem);
   transform-origin: left;
+  transform: scaleX(0);
+}
+
+body.loaded .hero__line {
+  animation: lineIn 1.1s 0.35s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .hero__scroll {
@@ -436,6 +444,24 @@ section {
 
 .reveal {
   opacity: 0;
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal[data-reveal='up'] {
+  transform: translateY(40px);
+}
+
+.reveal[data-reveal='left'] {
+  transform: translateX(-45px);
+}
+
+.reveal[data-reveal='scale'] {
+  transform: scale(0.92);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
 }
 
 @keyframes pulse {
@@ -445,6 +471,15 @@ section {
   }
   50% {
     opacity: 0.45;
+  }
+}
+
+@keyframes lineIn {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
   }
 }
 

@@ -1,46 +1,37 @@
 document.getElementById('year').textContent = new Date().getFullYear();
 
-gsap.registerPlugin(ScrollTrigger);
-
 const loader = document.getElementById('loader');
 const loaderName = document.getElementById('loaderName');
 const nameText = 'MAHENDRA';
 loaderName.innerHTML = [...nameText].map((char) => `<span class="loader__char">${char}</span>`).join('');
 
 const loaderChars = loaderName.querySelectorAll('.loader__char');
-const introTl = gsap.timeline({ defaults: { ease: 'power2.out' } });
-introTl
-  .to(loaderChars, { opacity: 1, y: 0, stagger: 0.08, duration: 0.4 })
-  .to(loaderName, { letterSpacing: '0.45em', duration: 0.5 }, '+=0.2')
-  .to(loader, { autoAlpha: 0, duration: 0.55 }, '+=0.35');
-
-gsap.from('#heroLine', { scaleX: 0, duration: 1.1, delay: 0.8, ease: 'power3.out' });
-
-const revealMap = {
-  up: { y: 40 },
-  left: { x: -45 },
-  scale: { scale: 0.92 }
-};
-
-document.querySelectorAll('.reveal').forEach((el) => {
-  const type = el.dataset.reveal || 'up';
-  gsap.fromTo(
-    el,
-    { opacity: 0, ...(revealMap[type] || revealMap.up) },
-    {
-      opacity: 1,
-      x: 0,
-      y: 0,
-      scale: 1,
-      ease: 'power2.out',
-      duration: 0.8,
-      scrollTrigger: {
-        trigger: el,
-        start: 'top 85%'
-      }
-    }
-  );
+loaderChars.forEach((char, index) => {
+  setTimeout(() => {
+    char.style.opacity = '1';
+    char.style.transform = 'translateY(0)';
+  }, index * 90);
 });
+setTimeout(() => {
+  loaderName.style.letterSpacing = '0.45em';
+}, 1100);
+setTimeout(() => {
+  loader.style.opacity = '0';
+  loader.style.visibility = 'hidden';
+  document.body.classList.add('loaded');
+}, 1700);
+
+const revealObserver = new IntersectionObserver(
+  (entries, observer) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('is-visible');
+      observer.unobserve(entry.target);
+    });
+  },
+  { root: null, threshold: 0.12, rootMargin: '0px 0px -5% 0px' }
+);
+document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
 
 const journeyCards = [...document.querySelectorAll('.journey-card')];
 const setActiveCard = (targetCard) => {
@@ -62,21 +53,24 @@ journeyCards.forEach((card) => {
 });
 
 if (window.matchMedia('(min-width: 901px)').matches) {
-  gsap.to('.journey-card--past', {
-    y: -40,
-    rotate: -4,
-    scrollTrigger: { trigger: '#journey', start: 'top 70%', end: 'bottom 30%', scrub: 1 }
-  });
-  gsap.to('.journey-card--present', {
-    y: -15,
-    rotate: 2.5,
-    scrollTrigger: { trigger: '#journey', start: 'top 70%', end: 'bottom 30%', scrub: 1 }
-  });
-  gsap.to('.journey-card--future', {
-    y: 30,
-    rotate: -2,
-    scrollTrigger: { trigger: '#journey', start: 'top 70%', end: 'bottom 30%', scrub: 1 }
-  });
+  const journeySection = document.getElementById('journey');
+  const applyJourneyParallax = () => {
+    const rect = journeySection.getBoundingClientRect();
+    const viewport = window.innerHeight;
+    const progress = Math.min(Math.max((viewport - rect.top) / (viewport + rect.height), 0), 1);
+
+    const past = document.querySelector('.journey-card--past');
+    const present = document.querySelector('.journey-card--present');
+    const future = document.querySelector('.journey-card--future');
+
+    if (past) past.style.transform = `translateY(${(-40 * progress).toFixed(2)}px) rotate(${(-3 - progress).toFixed(2)}deg)`;
+    if (present) present.style.transform = `translateY(${(-15 * progress).toFixed(2)}px) rotate(${(1.5 + progress).toFixed(2)}deg)`;
+    if (future) future.style.transform = `translateY(${(30 * progress).toFixed(2)}px) rotate(${(-1 - progress).toFixed(2)}deg)`;
+  };
+
+  applyJourneyParallax();
+  window.addEventListener('scroll', applyJourneyParallax, { passive: true });
+  window.addEventListener('resize', applyJourneyParallax);
 }
 
 const tabButtons = [...document.querySelectorAll('.tab-btn')];
@@ -124,6 +118,13 @@ if (hasFinePointer) {
     requestAnimationFrame(loop);
   };
   loop();
+
+  window.addEventListener('resize', () => {
+    mouseX = window.innerWidth / 2;
+    mouseY = window.innerHeight / 2;
+    ringX = mouseX;
+    ringY = mouseY;
+  });
 
   document.querySelectorAll('a, button, .journey-card, .tab-btn, .project').forEach((el) => {
     el.addEventListener('mouseenter', () => ring.classList.add('active'));

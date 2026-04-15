@@ -1,6 +1,6 @@
 # Mahendra Viras Portfolio
 
-Single-page editorial portfolio site built with plain HTML/CSS/JS and GSAP scroll animations.
+Single-page editorial portfolio site built with plain HTML, CSS, and JavaScript with cinematic scroll interactions.
 
 ## Run locally
 
